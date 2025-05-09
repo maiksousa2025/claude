@@ -1,20 +1,21 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// Configurações de conexão com o banco de dados
+$servidor = "localhost"; // Ou o endereço do seu servidor
+$usuario = "avanc958_maik";  // Seu usuário do banco de dados (ajuste conforme necessário)
+$senha = "sua_senha";  // Sua senha (ajuste conforme necessário)
+$banco = "avanc958_maik";  // Nome do seu banco de dados (ajuste conforme necessário)
 
-// Informações de conexão
-$host = 'localhost';
-$dbname = 'avanc958_maik2025';
-$username = 'avanc958_maik2025';
-$password = 'rackrack2025';
+// Cria a conexão com o banco de dados
+$mysqli = new mysqli($servidor, $usuario, $senha, $banco);
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Erro de conexão: " . $e->getMessage());
+// Verifica a conexão
+if ($mysqli->connect_error) {
+    die("Falha na conexão: " . $mysqli->connect_error);
 }
+
+// Define o charset como utf8
+$mysqli->set_charset("utf8");
+?>
 
 
 
